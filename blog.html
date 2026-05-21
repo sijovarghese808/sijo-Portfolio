@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" x-data="portfolio()" :class="{'dark': darkMode}" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Sijo Varghese</title>
+
+    <!-- Tailwind & Alpine -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            purple: '#8B5CF6',
+                            blue: '#3B82F6',
+                            cyan: '#06B6D4',
+                            dark: '#0F172A',
+                            darker: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        [x-cloak] { display: none !important; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .dark .glass { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .gradient-text { background: linear-gradient(to right, #8B5CF6, #3B82F6, #06B6D4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-brand-darker text-slate-900 dark:text-slate-100 font-sans selection:bg-brand-purple/30">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-brand-darker/80 backdrop-blur-md shadow-lg px-6 py-2">
+        <div class="max-w-7xl mx-auto flex justify-between items-center h-16">
+            <a href="index.html" class="font-display font-bold text-2xl tracking-tighter">
+                <span class="gradient-text uppercase">Sijo Varghese</span>
+            </a>
+            <div class="flex items-center space-x-8">
+                <a href="index.html" class="text-sm font-medium hover:text-brand-purple transition-colors">Home</a>
+                <a href="projects.html" class="text-sm font-medium hover:text-brand-purple transition-colors">Projects</a>
+                <button @click="darkMode = !darkMode" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+                    <svg x-show="!darkMode" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                    <svg x-show="darkMode" class="h-5 w-5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" /></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-24">
+        <div class="max-w-7xl mx-auto px-6 reveal">
+            <h1 class="text-5xl md:text-6xl font-display font-bold mb-6 text-center">My <span class="gradient-text">Insights</span></h1>
+            <p class="text-slate-500 dark:text-slate-400 text-center max-w-2xl mx-auto mb-20 text-lg">
+                Sharing my thoughts on Front-End development, UI/UX architecture, and the latest in Angular, React, and Next.js.
+            </p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <template x-for="post in [
+                    {title: 'Optimizing Angular Performance', date: 'Oct 12, 2025', tag: 'Angular', desc: 'Deep dive into OnPush change detection and zone.js optimization for enterprise apps.'},
+                    {title: 'Next.js 15: What is New?', date: 'Sep 28, 2025', tag: 'Next.js', desc: 'Exploring the latest features in Next.js and how they improve the developer experience.'},
+                    {title: 'Clean Code in React', date: 'Aug 15, 2025', tag: 'React', desc: 'Best practices for keeping your React components clean, testable, and reusable.'},
+                    {title: 'Building Premium UI with Tailwind', date: 'Jul 20, 2025', tag: 'Design', desc: 'How to use Tailwind CSS utility classes to build professional, high-end interfaces.'},
+                    {title: 'Micro-Frontends with Module Federation', date: 'Jun 05, 2025', tag: 'Architecture', desc: 'Scaling large frontend applications using micro-frontends and Webpack Module Federation.'}
+                ]">
+                    <div class="glass p-8 rounded-[2rem] border border-white/10 hover:border-brand-purple transition-all group">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold text-brand-purple bg-brand-purple/10 px-2.5 py-1 rounded-full" x-text="post.tag"></span>
+                            <span class="text-xs text-slate-500" x-text="post.date"></span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 group-hover:text-brand-purple transition-colors" x-text="post.title"></h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 leading-relaxed" x-text="post.desc"></p>
+                        <a href="#" class="text-sm font-bold inline-flex items-center group-hover:underline">Read More <svg class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg></a>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-12 border-t dark:border-slate-800 text-center text-slate-500 text-sm">
+        <p>&copy; 2026 Sijo Varghese. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function portfolio() {
+            return {
+                darkMode: true,
+                init() {
+                    this.darkMode = localStorage.getItem('theme') !== 'light';
+                    this.$watch('darkMode', val => localStorage.setItem('theme', val ? 'dark' : 'light'));
+                    const obs = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('active')), {threshold: 0.1});
+                    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+                }
+            }
+        }
+    </script>
+</body>
+</html>

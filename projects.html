@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" x-data="portfolio()" :class="{'dark': darkMode}" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Sijo Varghese</title>
+
+    <!-- Tailwind & Alpine -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            purple: '#8B5CF6',
+                            blue: '#3B82F6',
+                            cyan: '#06B6D4',
+                            dark: '#0F172A',
+                            darker: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        [x-cloak] { display: none !important; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .dark .glass { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .gradient-text { background: linear-gradient(to right, #8B5CF6, #3B82F6, #06B6D4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-brand-darker text-slate-900 dark:text-slate-100 font-sans selection:bg-brand-purple/30">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-brand-darker/80 backdrop-blur-md shadow-lg px-6 py-2">
+        <div class="max-w-7xl mx-auto flex justify-between items-center h-16">
+            <a href="index.html" class="font-display font-bold text-2xl tracking-tighter">
+                <span class="gradient-text uppercase">Sijo Varghese</span>
+            </a>
+            <div class="flex items-center space-x-8">
+                <a href="index.html" class="text-sm font-medium hover:text-brand-purple transition-colors">Back to Home</a>
+                <button @click="darkMode = !darkMode" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+                    <svg x-show="!darkMode" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                    <svg x-show="darkMode" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" /></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-24">
+        <div class="max-w-7xl mx-auto px-6 reveal">
+            <h1 class="text-5xl md:text-6xl font-display font-bold mb-6 text-center">My <span class="gradient-text">Projects</span></h1>
+            <p class="text-slate-500 dark:text-slate-400 text-center max-w-2xl mx-auto mb-20 text-lg">
+                A selection of my best work in front-end development, from flight booking platforms to enterprise dashboards.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <template x-for="p in [
+                    {title: 'Flight Booking Platform', tech: 'Angular, PrimeNG, RxJS', desc: 'A complex flight booking engine with dynamic seat maps, baggage selection, and real-time fare updates. Integrated with multiple GDS APIs.', features: ['Dynamic Booking Workflow', 'API Integrations', 'Responsive Search Modules']},
+                    {title: 'Hotel Reservation System', tech: 'React, Next.js, Tailwind', desc: 'A high-performance hotel booking site with advanced filtering, map integration, and server-side rendering for optimal SEO.', features: ['Dynamic Filtering', 'Optimized Performance', 'Mobile-First Design']},
+                    {title: 'Insurance Management Portal', tech: 'Angular, Material UI', desc: 'Enterprise-level portal for managing insurance policies, claims, and customer data. Built with a modular UI architecture for easy scalability.', features: ['Enterprise Dashboard', 'Dynamic Forms', 'Reusable Component System']},
+                    {title: 'Travel Dashboard UI', tech: 'Vue.js, PrimeFlex', desc: 'Analytics dashboard for travel agents to monitor bookings, commissions, and performance metrics with interactive charts.', features: ['Real-time Analytics', 'Reporting UI', 'Admin Dashboard']},
+                    {title: 'Modern ERP Frontend', tech: 'React, TypeScript, Redux', desc: 'A comprehensive ERP solution for internal business processes, focusing on data density and usability for expert users.', features: ['Scalable Architecture', 'State Management', 'Lazy Loading']}
+                ]">
+                    <div class="glass rounded-[2rem] p-10 border border-white/10 hover:border-brand-purple transition-all group">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="text-3xl font-bold font-display" x-text="p.title"></h3>
+                            <span class="text-xs font-bold text-brand-purple bg-brand-purple/10 px-3 py-1 rounded-full uppercase tracking-widest" x-text="p.tech"></span>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed" x-text="p.desc"></p>
+                        <div class="space-y-3 mb-10">
+                            <template x-for="f in p.features">
+                                <div class="flex items-center text-sm font-medium">
+                                    <svg class="h-5 w-5 text-brand-blue mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                    <span x-text="f"></span>
+                                </div>
+                            </template>
+                        </div>
+                        <a href="index.html#contact" class="inline-flex items-center text-brand-purple font-bold group-hover:underline">Discuss Project <svg class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></a>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-12 border-t dark:border-slate-800 text-center text-slate-500 text-sm">
+        <p>&copy; 2026 Sijo Varghese. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function portfolio() {
+            return {
+                darkMode: true,
+                init() {
+                    this.darkMode = localStorage.getItem('theme') !== 'light';
+                    this.$watch('darkMode', val => localStorage.setItem('theme', val ? 'dark' : 'light'));
+                    const obs = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('active')), {threshold: 0.1});
+                    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+                }
+            }
+        }
+    </script>
+</body>
+</html>

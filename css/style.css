@@ -1,0 +1,235 @@
+/* ============================================
+   Portfolio Custom Styles — Sijo Varghese
+   ============================================ */
+
+/* ----- Alpine.js cloak ----- */
+[x-cloak] {
+    display: none !important;
+}
+
+/* ============================================
+   GLASSMORPHISM
+   ============================================ */
+.glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+}
+
+.dark .glass {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   GRADIENT TEXT
+   ============================================ */
+.gradient-text {
+    background: linear-gradient(to right, #8B5CF6, #3B82F6, #06B6D4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+
+/* ============================================
+   SCROLL REVEAL
+   ============================================ */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   TIMELINE DOT
+   ============================================ */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 24px;
+    width: 18px;
+    height: 18px;
+    background: #8B5CF6;
+    border: 4px solid #F8FAFC;
+    border-radius: 50%;
+}
+
+.dark .timeline-item::after {
+    border-color: #020617;
+}
+
+/* ============================================
+   CONTACT CARD ENTRANCE ANIMATION
+   ============================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contact-card {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+/* ============================================
+   BACK-TO-TOP BUTTON
+   ============================================ */
+#back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+    opacity: 0;
+    transform: translateY(16px);
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+#back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* ============================================
+   TYPED.JS CURSOR
+   ============================================ */
+.typed-cursor {
+    color: #8B5CF6;
+    font-weight: 300;
+    font-size: inherit;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   HERO SECTION — MOBILE RESPONSIVE
+   ============================================ */
+
+/* Ensure hero text scales down gracefully */
+#home h1 {
+    word-break: break-word;
+}
+
+/* CTA buttons: stack on very small screens */
+.hero-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+@media (max-width: 480px) {
+    .hero-cta-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-cta-group a {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+/* ============================================
+   CONTACT SECTION — MOBILE RESPONSIVE
+   ============================================ */
+
+/* The lg:grid-cols-12 contact grid collapses to 1 column on mobile */
+/* .contact-section-grid {
+    display: grid;
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+@media (min-width: 1024px) {
+    .contact-section-grid {
+        grid-template-columns: 8fr 4fr;
+        gap: 4rem;
+    }
+} */
+
+/* Contact info cards panel */
+.contact-info-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@media (max-width: 1023px) {
+    .contact-info-panel {
+        /* Show as 2×2 grid on tablet */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 540px) {
+    .contact-info-panel {
+        /* Stack on phone */
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   SKILLS SECTION — MOBILE RESPONSIVE
+   ============================================ */
+@media (max-width: 480px) {
+    #skills .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================================
+   ABOUT SECTION — STAT CARDS MOBILE
+   ============================================ */
+@media (max-width: 480px) {
+    #about .grid-cols-2 {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+
+    #about .glass.p-8 {
+        padding: 1.25rem;
+    }
+}
+
+/* ============================================
+   NAV — MOBILE IMPROVEMENTS
+   ============================================ */
+@media (max-width: 768px) {
+    nav .font-display {
+        font-size: 1.1rem;
+    }
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}

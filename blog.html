@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog | Sijo Varghese</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
 
     <!-- Tailwind & Alpine -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -39,8 +40,17 @@
 
     <style>
         [x-cloak] { display: none !important; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .dark .glass { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+        }
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
         .gradient-text { background: linear-gradient(to right, #8B5CF6, #3B82F6, #06B6D4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
@@ -80,7 +90,7 @@
                     {title: 'Building Premium UI with Tailwind', date: 'Jul 20, 2025', tag: 'Design', desc: 'How to use Tailwind CSS utility classes to build professional, high-end interfaces.'},
                     {title: 'Micro-Frontends with Module Federation', date: 'Jun 05, 2025', tag: 'Architecture', desc: 'Scaling large frontend applications using micro-frontends and Webpack Module Federation.'}
                 ]">
-                    <div class="glass p-8 rounded-[2rem] border border-white/10 hover:border-brand-purple transition-all group">
+                    <div class="glass p-8 rounded-[2rem] border border-slate-200/80 dark:border-white/10 hover:border-brand-purple transition-all group">
                         <div class="flex justify-between items-center mb-4">
                             <span class="text-xs font-bold text-brand-purple bg-brand-purple/10 px-2.5 py-1 rounded-full" x-text="post.tag"></span>
                             <span class="text-xs text-slate-500" x-text="post.date"></span>

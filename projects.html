@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Sijo Varghese</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
 
     <!-- Tailwind & Alpine -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -39,8 +40,17 @@
 
     <style>
         [x-cloak] { display: none !important; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .dark .glass { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+        }
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
         .gradient-text { background: linear-gradient(to right, #8B5CF6, #3B82F6, #06B6D4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
@@ -79,7 +89,7 @@
                     {title: 'Travel Dashboard UI', tech: 'Vue.js, PrimeFlex', desc: 'Analytics dashboard for travel agents to monitor bookings, commissions, and performance metrics with interactive charts.', features: ['Real-time Analytics', 'Reporting UI', 'Admin Dashboard']},
                     {title: 'Modern ERP Frontend', tech: 'React, TypeScript, Redux', desc: 'A comprehensive ERP solution for internal business processes, focusing on data density and usability for expert users.', features: ['Scalable Architecture', 'State Management', 'Lazy Loading']}
                 ]">
-                    <div class="glass rounded-[2rem] p-10 border border-white/10 hover:border-brand-purple transition-all group">
+                    <div class="glass rounded-[2rem] p-10 border border-slate-200/80 dark:border-white/10 hover:border-brand-purple transition-all group">
                         <div class="flex justify-between items-start mb-6">
                             <h3 class="text-3xl font-bold font-display" x-text="p.title"></h3>
                             <span class="text-xs font-bold text-brand-purple bg-brand-purple/10 px-3 py-1 rounded-full uppercase tracking-widest" x-text="p.tech"></span>

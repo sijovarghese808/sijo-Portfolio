@@ -86,7 +86,7 @@ function contactForm() {
         statusMessage: '',
         submit() {
             this.status = 'loading';
-            fetch('https://formsubmit.co/ajax/sijo.varghese808@gmail.com', {
+            fetch('https://formsubmit.co/ajax/sijovarghese808@gmail.com', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
